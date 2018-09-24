@@ -45,6 +45,6 @@ class Reload extends Command
         $this->table(['Cloudflare IP'], $proxiesTable);
         $this->info('Proxies cached successfully.');
 
-        Log::info('Cloudflare proxies updated: ' . implode($proxies, ', '))
+        Log::info('Cloudflare proxies updated: ' . implode($proxies, ', '));
     }
 }

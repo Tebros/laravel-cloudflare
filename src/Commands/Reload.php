@@ -29,9 +29,12 @@ class Reload extends Command
      */
     public function handle()
     {
-        Cache::forever(
-            'cloudflare.proxies', 
-            (new TrustProxiesLoader())->load()
-        );
+        $loader = new TrustProxiesLoader();
+        $proxies = $loader->load();
+
+        Cache::forever('cloudflare.proxies', $proxies);
+
+        $this->line('Cloudflare IPs: ' . implode($proxies, ", "));
+        $this->line('Proxies cached.');
     }
 }

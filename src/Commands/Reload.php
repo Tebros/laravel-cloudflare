@@ -34,7 +34,14 @@ class Reload extends Command
 
         Cache::forever('cloudflare.proxies', $proxies);
 
-        $this->line('Cloudflare IPs: ' . implode($proxies, ", "));
-        $this->line('Proxies cached.');
+        
+        $proxiesTable = array_map(function ($item){
+            return [
+                'ip' => $item
+            ];
+        }, Cache::get('cloudflare.proxies', []));
+
+        $this->table(['Cloudflare IP'], $proxiesTable);
+        $this->info('Proxies cached successfully.');
     }
 }

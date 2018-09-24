@@ -28,9 +28,12 @@ class View extends Command
      */
     public function handle()
     {
-        $this->table(
-            ['Address'],
-            Cache::get('cloudflare.proxies', [])
-        );
+        $proxies = array_map(function ($item){
+            return [
+                'address' => $item
+            ];
+        }, Cache::get('cloudflare.proxies', []));
+
+        $this->table(['Address'], $proxies);
     }
 }

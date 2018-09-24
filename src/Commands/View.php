@@ -3,6 +3,7 @@
 namespace Adams\Cloudflare\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Cache;
 
 class View extends Command
 {

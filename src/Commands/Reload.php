@@ -2,9 +2,9 @@
 
 namespace Adams\Cloudflare\Commands;
 
-use Cache;
 use Adams\Cloudflare\TrustProxiesLoader;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Cache;
 
 class Reload extends Command
 {

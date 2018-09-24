@@ -2,10 +2,10 @@
 
 namespace Adams\Cloudflare\Middleware;
 
-use Cache;
 use Fideloper\Proxy\TrustProxies;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class TrustCloudflare extends TrustProxies
 {

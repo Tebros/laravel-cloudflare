@@ -5,6 +5,7 @@ namespace Adams\Cloudflare\Commands;
 use Adams\Cloudflare\TrustProxiesLoader;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
 class Reload extends Command
 {
@@ -34,8 +35,8 @@ class Reload extends Command
 
         Cache::forever('cloudflare.proxies', $proxies);
 
-        
-        $proxiesTable = array_map(function ($item){
+
+        $proxiesTable = array_map(function ($item) {
             return [
                 'ip' => $item
             ];
@@ -43,5 +44,7 @@ class Reload extends Command
 
         $this->table(['Cloudflare IP'], $proxiesTable);
         $this->info('Proxies cached successfully.');
+
+        Log::info('Cloudflare proxies updated: ' . implode($proxies, ', '))
     }
 }

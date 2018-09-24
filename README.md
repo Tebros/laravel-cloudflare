@@ -3,11 +3,11 @@ The package is developed to provide Cloudflare trust proxies support for Laravel
 List of IP ranges used by Cloudflare can be found here: (https://www.cloudflare.com/ips/).
 
 ## Installation
-1. Install composer package using command:
+I. Install composer package using command:
 ```
 composer install tebros/laravel-cloudflare
 ```
-2. Run artisan command to load fresh IPs from Cloudflare:
+II. Run artisan command to load fresh IPs from Cloudflare:
 ```
 php artisan cloudflare:reload
 ```

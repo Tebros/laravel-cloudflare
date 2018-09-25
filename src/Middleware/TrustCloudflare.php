@@ -25,19 +25,19 @@ class TrustCloudflare extends TrustProxies
     public function handle(Request $request, \Closure $next)
     {
         $existingProxies = $request->getTrustedProxies();
-        if(count($existingProxies)==1){
-            if($existingProxies[0]===$request->server->get('REMOTE_ADDR')){
-                dd('Vorher wurde alles mit * oder so erlaubt!', $existingProxies);
+        if (count($existingProxies) == 1) {
+            if ($existingProxies[0] === $request->server->get('REMOTE_ADDR')) {
+                //trust all proxies (*), so we dont need to add cloudflare proxies!
+                return;
             }
         }
 
-        $proxies = Cache::get('cloudflare.proxies');
+        $cfProxies = Cache::get('cloudflare.proxies');
 
-        if (!is_null($proxies)) {
-            array_push($existingProxies, $proxies);
+        if (!is_null($cfProxies)) {
+            $request->setTrustedProxies(array_merge($existingProxies, $cfProxies), $this->getTrustedHeaderNames());
+            dd('Zusammengefasst:', $request->getTrustedProxies());
         }
-
-        dd('Zusammengefasst:', $request->getTrustedProxies());
 
         return $next($request);
     }

@@ -36,7 +36,6 @@ class TrustCloudflare extends TrustProxies
 
         if (!is_null($cfProxies)) {
             $request->setTrustedProxies(array_merge($existingProxies, $cfProxies), $this->getTrustedHeaderNames());
-            dd('Zusammengefasst:', $request->getTrustedProxies());
         }
 
         return $next($request);

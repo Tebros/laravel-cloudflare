@@ -14,7 +14,7 @@ class TrustProxiesLoader
 
     /**
      * Get addresses from Cloudflare server.
-     * 
+     *
      * @param integer $type
      * @return array
      */
@@ -34,9 +34,9 @@ class TrustProxiesLoader
     }
 
     /**
-     * Send HTTP request to Cloudflare and 
+     * Send HTTP request to Cloudflare and
      * receive actual list of proxy addresses.
-     * 
+     *
      * @param string $uri
      * @return array
      */

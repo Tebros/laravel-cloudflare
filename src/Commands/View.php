@@ -28,7 +28,7 @@ class View extends Command
      */
     public function handle()
     {
-        $proxies = array_map(function ($item){
+        $proxies = array_map(function ($item) {
             return [
                 'address' => $item
             ];
